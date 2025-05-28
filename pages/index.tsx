@@ -1,12 +1,32 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-export default function RoyalVenturesHome() {
+const sections = [
+  {
+    title: "Royal Realty",
+    description: "Residential and commercial real estate services with personalized support from start to finish.",
+  },
+  {
+    title: "Royal Capital",
+    description: "Mortgage loans and refinancing led by our in-house financing expert to get you the best rates.",
+  },
+  {
+    title: "Royal Holdings",
+    description: "Strategic real estate investments, future REIT development, and rental property acquisitions.",
+  },
+  {
+    title: "Royal Property Management",
+    description: "Professional management of both our own properties and those of third-party clients.",
+  },
+  {
+    title: "Royal Design & Staging",
+    description: "Home staging and design services to elevate spaces and maximize property appeal.",
+  },
+];
+
+export default function Home() {
   return (
-    <div className="min-h-screen bg-[#e6ede5] text-[#2d3b2d] px-6 py-10">
+    <div className="min-h-screen bg-[#e6ede5] text-[#2d3b2d] px-6 py-10 font-sans">
       <header className="max-w-5xl mx-auto mb-10 flex justify-between items-center">
         <motion.h1
           className="text-3xl font-bold"
@@ -17,9 +37,9 @@ export default function RoyalVenturesHome() {
           Royal Ventures & Co.
         </motion.h1>
         <nav className="space-x-4">
-          <Link href="#about"><Button variant="ghost">About</Button></Link>
-          <Link href="#services"><Button variant="ghost">Services</Button></Link>
-          <Link href="#contact"><Button variant="ghost">Contact</Button></Link>
+          <Link href="#about">About</Link>
+          <Link href="#services">Services</Link>
+          <Link href="#contact">Contact</Link>
         </nav>
       </header>
 
@@ -32,12 +52,10 @@ export default function RoyalVenturesHome() {
 
         <section id="services" className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {sections.map(({ title, description }, index) => (
-            <Card key={index} className="rounded-2xl shadow-md">
-              <CardContent className="p-6 space-y-4">
-                <h2 className="text-2xl font-semibold">{title}</h2>
-                <p>{description}</p>
-              </CardContent>
-            </Card>
+            <div key={index} className="rounded-2xl shadow-md bg-white p-6 space-y-4">
+              <h2 className="text-2xl font-semibold">{title}</h2>
+              <p>{description}</p>
+            </div>
           ))}
         </section>
 
@@ -70,35 +88,15 @@ export default function RoyalVenturesHome() {
               rows={5}
               required
             ></textarea>
-            <Button type="submit" className="w-full text-white bg-[#2d3b2d] hover:bg-[#243024] rounded-2xl">
+            <button
+              type="submit"
+              className="w-full py-2 px-4 bg-[#2d3b2d] text-white rounded-2xl"
+            >
               Send Message
-            </Button>
+            </button>
           </form>
         </section>
       </main>
     </div>
   );
 }
-
-const sections = [
-  {
-    title: "Royal Realty",
-    description: "Residential and commercial real estate services with personalized support from start to finish.",
-  },
-  {
-    title: "Royal Capital",
-    description: "Mortgage loans and refinancing led by our in-house financing expert to get you the best rates.",
-  },
-  {
-    title: "Royal Holdings",
-    description: "Strategic real estate investments, future REIT development, and rental property acquisitions.",
-  },
-  {
-    title: "Royal Property Management",
-    description: "Professional management of both our own properties and those of third-party clients.",
-  },
-  {
-    title: "Royal Design & Staging",
-    description: "Home staging and design services to elevate spaces and maximize property appeal.",
-  },
-];
